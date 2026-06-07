@@ -35,7 +35,7 @@ void    clsDbLinedList<T>::InstertAtBeginning(T Value)
 }
 
 template<typename T>
-void    clsDbLinedList<T>::InsertAfer(Node &N, T Value)
+void    clsDbLinedList<T>::InsertAfer(Node *N, T Value)
 {
     Node    *New = NewNode(Value);
 
@@ -45,7 +45,7 @@ void    clsDbLinedList<T>::InsertAfer(Node &N, T Value)
 }
 
 template<typename T>
-clsDbLinedList<T>::Node    *clsDbLinedList<T>::Find(T Value)
+typename clsDbLinedList<T>::Node    *clsDbLinedList<T>::Find(T Value)
 {
     Node    *Current = Head;
     while (Current != nullptr)
@@ -58,10 +58,22 @@ clsDbLinedList<T>::Node    *clsDbLinedList<T>::Find(T Value)
 }
 
 template<typename T>
-void    clsDbLinedList<T>::DeleteNode(Node N)
+void    clsDbLinedList<T>::DeleteNode(Node *N)
 {
-    if (Find(N.Value) == nullptr)
-        cout << "This Node doen't exist\n";    
+    if (Find(N->Value) == nullptr)
+    {
+        cout << "This Node doen't exist\n";
+        return ;
+    }
+    if (Size == 1)
+    {
+        delete N;
+        Head = nullptr;
+        return ;
+    }
+    N->Prev->Next = N->Next;
+    N->Next->Prev = N->Prev;
+    delete N;
 }
 
 

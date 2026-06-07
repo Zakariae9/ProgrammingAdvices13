@@ -35,9 +35,9 @@ public:
     }
 
     void    InstertAtBeginning(T Value);
-    void    InsertAfer(Node &N, T Value);
+    void    InsertAfer(Node *N, T Value);
     Node    *Find(T Value);
-    void    DeleteNode(Node N);
+    void    DeleteNode(Node *N);
     void    DeleteFirstNode();
     void    PrintList();
 };
