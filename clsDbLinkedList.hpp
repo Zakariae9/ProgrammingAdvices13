@@ -9,37 +9,48 @@ class   clsDbLinedList
 public:
     class   Node
     {
-    private:
+    public:
         Node    *Prev;
         T       Value;
         Node    *Next;
     };
-    int         Size;
-    Node        *Head;
-    Node        *NewNode(T Value);
+private:
+    int         _size;
+    Node        *_Head;
+    Node        *_NewNode(T Value);
 public:
     clsDbLinedList();
     friend ostream  &operator<<(ostream &o, const clsDbLinedList &RHS)
     {
-        Node   *Current = RHS.Head;
+        Node   *Current = RHS._Head;
 
         o << "============================================\n";
-        o << "\tSize of DBL is: " << RHS.Size << endl;
+        o << "\tSize of DBL is: " << RHS._size << endl;
         o << "============================================\n";
         while (Current != nullptr)
         {
-            o << Current->Prev << "<=" << Current->Value << "=>" << Current->Next << endl;
+            o << Current->Value << " ";
             Current = Current->Next;
         }
         return o;
     }
-
+	int		Size();
+	bool	IsEmpty();
     void    InstertAtBeginning(T Value);
-    void    InsertAfer(Node *N, T Value);
+    void	InsertAfter(Node *N, T Value);
+    Node	*LastNode();
+    void    InsertAtEnd(T Value);
     Node    *Find(T Value);
     void    DeleteNode(Node *N);
     void    DeleteFirstNode();
-    void    PrintList();
+	void	Clear();
+	void	Reverce();
+	void	Swap(Node *&N1, Node *&N);
+	Node	*GetNode(int Index);
+	T		GetItem(int Index);
+	bool	UpdateItem(int Index, T NewValue);
+	void	InsertAfter(int Index, T Value);
+    void    DeleteLastNode();
 };
 
 
