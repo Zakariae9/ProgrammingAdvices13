@@ -156,6 +156,9 @@ template<typename T>
 typename clsDbLinedList<T>::Node	*clsDbLinedList<T>::LastNode()
 {
 	Node	*Current = _Head;
+
+	if (Current == nullptr)
+		return nullptr;
 	while (Current->Next != nullptr)
 		Current = Current->Next;
 	return Current;
@@ -166,6 +169,12 @@ void    clsDbLinedList<T>::InsertAtEnd(T Value)
 	Node	*N = _NewNode(Value);
 	Node	*Last = LastNode();
 
+    _size++;
+    if (Last == nullptr)
+    {
+        _Head = N;
+        return ;
+    }
 	Last->Next = N;
 	N->Prev = Last;
 }

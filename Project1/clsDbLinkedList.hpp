@@ -24,9 +24,6 @@ public:
     {
         Node   *Current = RHS._Head;
 
-        o << "============================================\n";
-        o << "\tSize of DBL is: " << RHS._size << endl;
-        o << "============================================\n";
         while (Current != nullptr)
         {
             o << Current->Value << " ";
