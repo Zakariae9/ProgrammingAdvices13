@@ -6,6 +6,23 @@ clsDbLinedList<T>::clsDbLinedList()
     _size = 0;
     _Head = NULL;
 }
+
+template<typename T>
+void    clsDbLinedList<T>::DeleteLastNode()
+{
+    Node    *N = LastNode();
+    if (Size() == 1)
+    {
+        delete N;
+        _Head = nullptr;
+        return ;
+    }
+    N->Prev->Next = nullptr;
+    N->Prev = nullptr;
+    delete N;
+    _size--;
+}
+
 template <typename T>
 typename clsDbLinedList<T>::Node*  clsDbLinedList<T>::_NewNode(T Value)
 {
@@ -26,7 +43,7 @@ int	clsDbLinedList<T>::Size()
 template<typename T>
 void	clsDbLinedList<T>::Clear()
 {
-	while (_Head != nullptr)
+	while (_size)
 		DeleteFirstNode();
 }
 
