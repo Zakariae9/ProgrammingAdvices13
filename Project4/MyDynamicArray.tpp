@@ -145,7 +145,7 @@ bool    MyDynamicArray<T>::InsertAtBeginning(T Value)
 template<typename T>
 bool    MyDynamicArray<T>::InsertAfter(int Index, T Value)
 {
-    if (Index >= size)
+    if (Index >= _size)
         return InsertAt(Index - 1, Value);
     return InsertAt(Index + 1, Value);
 }

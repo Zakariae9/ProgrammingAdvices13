@@ -1,8 +1,8 @@
-#include "MyQueue.hpp"
+#include "MyQueueArr.hpp"
 
 int main()
 {
-    MyQueue<int>    Q1;
+    clsMyQueueArr<int>    Q1(5);
 
     Q1.push(10);
     Q1.push(20);
@@ -26,9 +26,10 @@ int main()
     Q1.Reverce();
     cout << "List after revercing: ";
     Q1.Print();
-    cout << "After updating item 1 to 798 linst will be: ";
-    Q1.UpdateItem(1, 798);
-    Q1.Print();
+
+    // cout << "After updating item 1 to 798 linst will be: ";
+    // Q1.UpdateItem(1, 798);
+    // Q1.Print();
     cout << "After inserting 100 after 798: ";
     Q1.InsertAfter(1, 100);
     Q1.Print();
